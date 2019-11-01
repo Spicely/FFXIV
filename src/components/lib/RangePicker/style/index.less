@@ -1,0 +1,29 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}range_picker {
+    height: @input_height;
+    position: relative;
+    width: 100% !important;
+
+    .ant-calendar-picker-input {
+        box-shadow: initial !important;
+    }
+
+    input {
+        box-shadow: initial;
+    }
+
+}
+
+.ant-calendar-range {
+    transform: translate(0, 2 * @unit);
+
+    .ant-calendar-input {
+        height: @input_height  !important;
+    }
+
+    .ant-calendar-ok-btn {
+        font-size: 12 * @unit;
+    }
+}

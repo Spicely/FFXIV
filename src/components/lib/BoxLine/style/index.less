@@ -1,0 +1,9 @@
+@import '../../style/theme.less';
+
+.@{prefix}box_line {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70 * @unit, 1fr));
+    grid-auto-rows: minmax(70 * @unit, auto);
+    grid-gap: .5em;
+    padding-bottom: 10 * @unit;
+}

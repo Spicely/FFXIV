@@ -1,0 +1,41 @@
+@import '../../style/theme.less';
+
+.@{prefix}nav_bar {
+    background: @theme_color;
+    height: @nav_bar_height;
+    padding: 0 14 * @unit;
+    box-sizing: border-box;
+    z-index: 8;
+
+    &.fixed {
+        top: 0;
+    }
+
+    &_left {
+        padding-right: 10 * @unit;
+        min-width: 1.4rem;
+    }
+
+    &_title {
+        font-size: 14 * @unit;
+    }
+
+    &_right {
+        padding-left: 10 * @unit;
+        min-width: 1.4rem;
+
+        &__img {
+            width: 22 * @unit;
+            height: 22 * @unit;
+        }
+
+        &__item {
+            display: inline-block;
+            margin-right: 5 * @unit;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

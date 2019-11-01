@@ -1,0 +1,43 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}progress {
+    &_inter {
+        position: relative;
+        height: @progress_height;
+        background: #f5f5f5;
+        border-radius: @theme_border_radius;
+        overflow: hidden;
+        .transition(0.5s);
+
+        &__bg {
+            background: @theme_color;
+            height: 100%;
+            .transition(0.5s);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        &_success__bg {
+            background: @theme_success_color;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            .transition(0.5s);
+        }
+    }
+
+    &__text {
+        display: inline-block;
+        margin-left: 8 * @unit;
+        color: rgba(0, 0, 0, 0.45);
+        line-height: 1;
+        white-space: nowrap;
+        text-align: left;
+        vertical-align: middle;
+        word-break: normal;
+    }
+
+}

@@ -1,0 +1,31 @@
+@import '../../style/theme.less';
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.@{prefix}image {
+    border: 0;
+
+    &.opacity {
+        opacity: 0;
+    }
+
+    &.an_fadeIn {
+        animation: fade-in 1.5s forwards;
+    }
+
+    &.show {
+        opacity: 1;
+    }
+}

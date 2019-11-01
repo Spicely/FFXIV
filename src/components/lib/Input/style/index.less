@@ -1,0 +1,167 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+@height: @input_height + 18 * @unit;
+
+.@{prefix}input {
+    height: @input_height;
+    font-size: @input_font_size;
+    position: relative;
+    .transition(0.5s);
+    overflow: hidden;
+    background: #fff;
+
+    &__label {
+        width: 60 * @unit;
+    }
+
+    &.active {
+        height: @height;
+
+        input {
+            @diff: 18 * @unit;
+            top: @diff;
+            height: calc(100% - @diff);
+        }
+    }
+
+    &_text {
+        height: 18 * @unit;
+        font-size: 12 * @unit;
+        position: absolute;
+        @top: @height / 2 - 12 * @unit / 2;
+        transform: translate(0, @top);
+        color: #888888;
+        pointer-events: none;
+        z-index: 1;
+        transition: all 0.5s;
+
+        &.active {
+            transform: translate(0, 0);
+            color: #333333;
+        }
+    }
+
+    &_box {
+        position: relative;
+        .transition(0.5s);
+        border: 1 * @unit solid #e8e8e8;
+
+        &.@{prefix}disabled {
+            background: #fff;
+
+            &:hover {
+                border-color: #e8e8e8;
+                cursor: not-allowed;
+            }
+        }
+
+        &:hover {
+            border-color: @theme_color;
+        }
+
+        /* IE浏览器 */
+        &.@{prefix}focus {
+            border-color: @theme_color;
+        }
+
+        &_pre_icon {
+            width: 35 * @unit;
+        }
+
+        input {
+            padding: 0 10 * @unit;
+            outline: none;
+            height: 100%;
+            background: inherit;
+            width: 100%;
+            position: relative;
+            font-size: @input_font_size;
+            transition: all 0.5s;
+            -moz-appearance: textfield;
+            border: none;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                appearance: none;
+                margin: 0;
+            }
+
+            &::-webkit-input-placeholder {
+                font-size: @input_font_size;
+            }
+
+            /* 使用webkit内核的浏览器 */
+            &:-moz-placeholder {
+                font-size: @input_font_size;
+            }
+
+            /* Firefox版本4-18 */
+            &::-moz-placeholder {
+                font-size: @input_font_size;
+            }
+
+            /* Firefox版本19+ */
+            &:-ms-input-placeholder {
+                font-size: @input_font_size;
+            }
+
+            &:disabled {
+                background: #fff;
+
+                &:hover {
+                    border-color: #e8e8e8 !important;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+
+
+    &_close_icon {
+        .transition(0.5s);
+        position: absolute;
+        right: 10 * @unit;
+        top: 50%;
+        transform: translate(0, -50%);
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            color: #fff;
+            fill: #fff;
+        }
+    }
+
+    &_max_length {
+        .transition(0.5s);
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 10 * @unit;
+    }
+
+    &_extend {
+        padding: 0 10 * @unit;
+    }
+
+    &.@{prefix}input_search {
+        min-width: 320 * @unit;
+
+        .@{prefix}input_extend {
+            padding: 0;
+        }
+
+        .@{prefix}input_search_btn {
+            min-width: initial;
+            padding: 0 20 * @unit;
+        }
+    }
+}

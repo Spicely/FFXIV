@@ -1,0 +1,135 @@
+@import '../theme.less';
+
+html {
+    font-size: @html_fs;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+li,
+dl {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+* {
+    box-sizing: border-box;
+    font-size: 12 * @unit;
+}
+
+svg {
+    font-size: inherit;
+}
+
+@media screen and (min-width: 750px) {
+    ::-webkit-scrollbar {
+        width: 4 * @unit;
+        height: 4 * @unit;
+    }
+
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: theme_border_radius;
+        background: lighten(@theme_color, 20%);
+    }
+
+    ::-webkit-scrollbar-track {
+        width: 6 * @unit;
+        height: 6 * @unit;
+    }
+}
+
+.transition {
+    transition: all 0.5s;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex_justify {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex_center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.flex_1 {
+    flex: 1;
+}
+
+.@{prefix}divider {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 1 * @unit;
+        width: 100%;
+        background: @theme_line_color;
+        transform: scaleY(0.5);
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.@{prefix}divider_right {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 1 * @unit;
+        background: @theme_line_color;
+        transform: scaleX(0.5);
+        top: 0;
+        right: 0;
+    }
+}
+
+.@{prefix}divider_top {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 1 * @unit;
+        width: 100%;
+        background: @theme_line_color;
+        transform: scaleY(0.5);
+        top: 0;
+        left: 0;
+    }
+}
+
+.@{prefix}fixed {
+    position: -webkit-sticky;
+    position: fixed;
+    width: 100%;
+}

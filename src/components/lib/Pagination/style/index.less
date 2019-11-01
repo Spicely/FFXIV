@@ -1,0 +1,26 @@
+@import '../../style/theme.less';
+
+.@{prefix}pagination {
+    display: inline-block;
+    height: @pagination_height;
+    padding-top: (@pagination_height - 32 * @unit ) / 2;
+
+    &_btn {
+        width: 32 * @unit;
+        min-width: initial;
+        margin-left: 5 * @unit;
+        padding: 0;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &.@{prefix}select {
+            border-color: @theme_color;
+        }
+
+        &.@{prefix}notline {
+            border: 0;
+        }
+    }
+}

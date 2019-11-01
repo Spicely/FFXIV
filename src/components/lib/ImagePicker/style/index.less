@@ -1,0 +1,59 @@
+@import '../../style/theme.less';
+@import '../../style/core/index.less';
+
+.@{prefix}image_picker {
+    font-size: 18 * @unit;
+    background: @image_picker__bg;
+
+    &__add {
+        height: @image_picker__size;
+        width: @image_picker__size;
+        border: @image_picker__border;
+        border-radius: @theme_border_radius;
+        cursor: pointer;
+        margin-right: 10 * @unit;
+        margin-bottom: 5 * @unit;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        .transition;
+
+
+
+        &_close {
+            position: absolute;
+            right: 5* @unit;
+            top: 5* @unit;
+        }
+
+        &:first-of-type {
+            margin-left: 0;
+        }
+
+        &_box {
+            height: 100%;
+
+            &.picker_img {
+                height: calc(100% - 10* @unit);
+                width: calc(100% - 10* @unit);
+                margin: 5 * @unit;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            &_img {
+                width: 100%;
+            }
+        }
+
+        &:hover {
+            border-color: @theme_color ;
+        }
+    }
+
+    &_crop {
+        &__container {
+            background: #fff;
+        }
+    }
+}

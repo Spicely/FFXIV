@@ -1,0 +1,33 @@
+@import '../../style/theme.less';
+
+.@{prefix}switch {
+    height: 25 * @unit;
+    width: 52 * @unit;
+    border-radius: 12.5 * @unit;
+    display: inline-block;
+    position: relative;
+    transition: all 0.5s;
+    background: #fff;
+
+    &::after {
+        content: "";
+        height: 25 * @unit - 4 * @unit;
+        width: 25 * @unit - 4 * @unit;
+        background: #c8c8c8;
+        position: absolute;
+        left: 4 * @unit / 4;
+        top: 4 * @unit / 4;
+        border-radius: 50%;
+        transition: all 0.5s;
+        transform: translate3d(0, 0, 0);
+        box-shadow: 0 0 2 * @unit #ccc;
+    }
+
+    &.active {
+        background: @theme_color;
+
+        &::after {
+            transform: translate3d(52 * @unit - 25 * @unit, 0, 0);
+        }
+    }
+}

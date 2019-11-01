@@ -1,0 +1,53 @@
+@import '../../style/theme.less';
+
+.@{prefix}dropdown {
+    position: relative;
+    display: inline-block;
+
+    &_overlay {
+        position: absolute;
+        background: #fff;
+        box-shadow: 0 0 5 * @unit 2 * @unit #ccc;
+        margin-top: 10 * @unit;
+        left: -50%;
+        z-index: 9;
+        border-radius: 6 * @unit;
+
+        .mk_menu {
+            background: transparent;
+        }
+
+        &::after {
+            position: absolute;
+            left: calc(50% - 3 * @unit);
+            top: -5 * @unit;
+            content: "";
+            z-index: 9;
+            width: 0;
+            height: 0;
+            border-left: 10 * @unit solid transparent;
+            border-right: 10 * @unit solid transparent;
+            border-bottom: 6 * @unit solid #fff;
+        }
+
+        &.hide {
+            visibility: hidden;
+        }
+
+        &.anima_fadeIn {
+            animation: fadeIn 0.5s;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(2rem)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0rem)
+    }
+}

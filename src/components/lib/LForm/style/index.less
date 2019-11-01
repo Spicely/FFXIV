@@ -1,0 +1,60 @@
+@import '../../style/theme.less';
+
+.@{prefix}l_form {
+    padding: 20 * @unit;
+
+    &__list {
+        min-height: 40 * @unit;
+    }
+
+    &.column {
+        .@{prefix}l_form__list {
+            margin-top: 5 * @unit;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &_label {
+                display: flex;
+                align-items: flex-start;
+                margin-right: 6 * @unit;
+            }
+        }
+    }
+
+
+    &_upload_label {
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 10 * @unit;
+        margin-right: 6 * @unit;
+    }
+
+    &_radio_group {
+        height: 30 * @unit;
+
+        .ant-radio-wrapper {
+            line-height: @global_init_height;
+        }
+
+        &_label {
+            padding-right: 10 * @unit;
+        }
+    }
+
+    &_label {
+        height: 45 * @unit;
+    }
+
+    &__additional {
+        display: flex;
+        padding-top: 10 * @unit;
+        margin-top: 10 * @unit;
+        border-top: 1 * @unit dashed #eee;
+    }
+
+    &_btn {
+        width: 100%;
+    }
+}

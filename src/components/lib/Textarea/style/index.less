@@ -1,0 +1,44 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}textarea {
+    position: relative;
+    background: #fff;
+    border-radius: @theme_border_radius;
+
+    textarea {
+        padding: 5 * @unit;
+        width: 100%;
+        border: none;
+        outline: none;
+        min-height: 80 * @unit;
+        font-size: @textarea_font_size;
+        resize: none;
+        background: inherit;
+        border: 1 * @unit solid #e8e8e8;
+        border-radius: inherit;
+        .transition(0.5s);
+
+        &:disabled {
+            background: transparent;
+
+            &:hover {
+                border-color: #e8e8e8 !important;
+            }
+        }
+
+        &:focus {
+            border-color: @theme_color;
+        }
+
+        &:hover {
+            border-color: @theme_color  !important;
+        }
+    }
+
+    &_max_length {
+        position: absolute;
+        right: 10 * @unit;
+        bottom: 10 * @unit;
+    }
+}

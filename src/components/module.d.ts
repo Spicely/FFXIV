@@ -1,0 +1,7 @@
+declare module 'rc-table'
+declare module 'rc-time-picker'
+declare module 'rc-slider'
+declare module 'react-easy-crop'
+declare module 'react-select'
+declare module 'load-script'
+declare module 'quill-image-drop-module'

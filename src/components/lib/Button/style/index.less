@@ -1,0 +1,86 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}btn {
+    height: @button_height;
+    transition: all .1s cubic-bezier(0.65, 0.05, 0.36, 1);
+    border: none;
+    border-radius: @theme_border_radius;
+    background: initial;
+    border: 1 * @unit solid #ddd;
+    outline: none;
+    min-width: 78 * @unit;
+    cursor: pointer;
+    .transition(0.5s);
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        border-color: rgba(@theme_color, 0.8);
+    }
+
+    &.btn_circle {
+        border-radius: 50%;
+        padding: 0;
+        width: 35 * @unit;
+        min-width: initial;
+        background: @theme_color;
+        color: #fff;
+        fill: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+    }
+
+    &.btn_error {
+        color: @error_color  !important;
+        border-color: @error_color;
+        background: #ffe4e8;
+    }
+
+    &.btn_primary {
+        min-width: 78 * @unit;
+        background: @theme_color;
+        color: #fff;
+        border-color: @theme_color;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            border-color: rgba(@theme_color, 0.8);
+            background: rgba(@theme_color, 0.8);
+        }
+    }
+
+    &.fixed {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        background: @theme_color;
+    }
+
+    &.disabled {
+        border-color: #dfd8d8;
+        color: rgba(0, 0, 0, 0.25);
+        background: #dfd8d8;
+        cursor: no-drop;
+
+        &:hover {
+            border-color: #dfd8d8;
+            color: rgba(0, 0, 0, 0.25);
+            background: #dfd8d8;
+        }
+    }
+
+    &_loading {
+        vertical-align: middle;
+        position: relative;
+        fill: #fff;
+        top: -2 * @unit;
+        right: 5 * @unit;
+    }
+}

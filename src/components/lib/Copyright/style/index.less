@@ -1,0 +1,30 @@
+@import '../../style/theme.less';
+
+.@{prefix}copyright {
+    padding: @copyright_padding;
+
+    &__logo {
+        height: 20 * @unit;
+        width: 20* @unit;
+    }
+
+    &__label {
+        color: #cecece;
+        text-align: center;
+    }
+
+    &.@{prefix}horizontal {
+        .@{prefix}copyright__label {
+            color: #cecece;
+            text-align: center;
+            vertical-align: middle;
+            margin-left: 5 * @unit;
+        }
+
+        .@{prefix}n_logo {
+            .@{prefix}copyright__label {
+                margin-left: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+@import '../../style/theme.less';
+
+.@{prefix}grid {
+    width: 100%;
+    white-space: pre-line;
+    background: #fff;
+
+    &_list {
+        &:last-child::after {
+            content: none;
+        }
+
+        &_item {
+            flex-shrink: 0;
+            height: 80 * @unit;
+            padding: 10 * @unit 0;
+            cursor: pointer;
+
+            &__img {
+                display: block;
+                margin: 0 auto;
+                height: 35 * @unit;
+                width: 35 * @unit;
+            }
+
+            &__label {
+                text-align: center;
+                padding: 0 * @unit 10 * @unit 0 10 * @unit;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 10 * @unit;
+                margin-top: 10 * @unit;
+            }
+
+            &.@{prefix}rect {
+                display: flex;
+                height: 40 * @unit;
+                padding: 0;
+
+                .@{prefix}grid_list_item__img {
+                    display: inline-block;
+                    margin: 0;
+                    margin-top: 5 * @unit;
+                    margin-left: 15 * @unit;
+                    width: 30 * @unit;
+                    height: 30 * @unit;
+                }
+
+                .@{prefix}grid_list_item__label {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding-left: 5 * @unit;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@import '../../style/theme.less';
+
+.@{prefix}shop_result_bar {
+    height: @shop_result_bar_height;
+    background: #fff;
+    padding: @shop_result_bar_padding;
+    box-shadow: 0 -3 * @unit 3 * @unit @theme_shadow_color;
+
+    &_btn {
+        border-radius: 17 * @unit;
+        height: 30 * @unit;
+    }
+
+    .@{prefix}left {
+        padding-left: 5* @unit;
+    }
+
+    .@{prefix}right {
+        padding-right: 5* @unit;
+        text-align: right;
+    }
+}

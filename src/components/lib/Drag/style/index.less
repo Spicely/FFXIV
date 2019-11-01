@@ -1,0 +1,17 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}drag {
+    cursor: move;
+
+    &_box {
+        &_view {
+            border: 1 * @unit dashed #fff;
+            .transition(0.2s);
+        }
+
+        &_line {
+            border: 1 * @unit dashed @theme_color;
+        }
+    }
+}

@@ -1,0 +1,97 @@
+@import '../../style/theme.less';
+
+.@{prefix}dialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    overflow: hidden;
+
+    &.fadeIn {
+        animation:~"@{prefix}dialog_fadeIn"0.3s forwards;
+    }
+
+    &.fadeOut {
+        background: rgba(0, 0, 0, 0.5);
+        animation:~"@{prefix}dialog_fadeOut"0.3s 0.5s forwards;
+    }
+
+    &_content {
+        min-width: 600 * @unit;
+        max-height: calc(100% - 100 * @unit);
+        background: #fff;
+        border-radius: @theme_border_radius;
+        overflow: hidden;
+        box-shadow: 0 0 10 * @unit rgb(107, 107, 107);
+
+        &.slipUp {
+            transform: translate3d(0, 100vh, 0);
+            animation:~"@{prefix}dialog_slipToUp"0.5s 0.2s forwards cubic-bezier(0.3, 0.23, 0.22, 1.04);
+        }
+
+        &.slipBottom {
+            animation:~"@{prefix}dialog_slipToBottom"0.5s forwards;
+        }
+
+        &__navbar {
+            background: transparent !important;
+
+            .navbar_label {
+                font-size: 14 * @unit;
+            }
+
+            &:last-child {
+                height: 2.5rem !important;
+            }
+        }
+
+        &__box {
+            min-height: 300 * @unit;
+            position: relative;
+            margin: 0 20 * @unit;
+            overflow: auto;
+        }
+    }
+
+    @keyframes ~"@{prefix}dialog_fadeIn" {
+        from {
+            background: rgba(0, 0, 0, 0);
+        }
+
+        to {
+            background: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    @keyframes ~"@{prefix}dialog_fadeOut" {
+        from {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        to {
+            background: rgba(0, 0, 0, 0);
+        }
+    }
+
+    @keyframes ~"@{prefix}dialog_slipToUp" {
+        from {
+            transform: translate3d(0, 100vh, 0);
+        }
+
+        to {
+            transform: translate3d(0, 0vh, 0);
+        }
+    }
+
+    @keyframes ~"@{prefix}dialog_slipToBottom" {
+        from {
+            transform: translate3d(0, 0vh, 0);
+        }
+
+        to {
+            transform: translate3d(0, 100vh, 0);
+        }
+    }
+}

@@ -1,0 +1,120 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}tab_bar {
+    background: @tab_bar_bg_color;
+    transition: all .1s cubic-bezier(0.65, 0.05, 0.36, 1);
+    position: relative;
+    box-sizing: border-box;
+    height: @tab_bar_height;
+
+    &_vertical {
+        position: relative;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+        .@{prefix}tab_bar_active_bar {
+            .transition(0.3s);
+            width: 2 * @unit;
+            height: 100%;
+            background: @theme_color;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &_horizontal {
+        position: relative;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+        .@{prefix}tab_bar_active_bar {
+            .transition(0.3s);
+            width: 100%;
+            height: 2 * @unit;
+            background: @theme_color;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+    &_item {
+        padding: 6 * @unit 10 * @unit;
+        height: @tab_bar_item_height;
+        cursor: pointer;
+        flex-shrink: 0;
+
+        &_icon {
+            height: @tab_bar_item_height * 0.6 - 6 * @unit;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        &_label {
+            height: @tab_bar_item_height * 0.4;
+            font-size: 10 * @unit;
+        }
+
+        &_view {
+            .transition(0.3s);
+            padding: @tah_bar_item_view_padding;
+            .scrollView();
+
+            &.@{prefix}vertical {
+                height: 100%;
+                width: 100%;
+            }
+
+            &.@{prefix}horizontal {
+                height: 100%;
+                width: 100%;
+                flex-shrink: 0;
+            }
+        }
+
+        .all_height {
+            height: 100%;
+        }
+    }
+
+    &_view {
+        &.@{prefix}vertical {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        &.@{prefix}horizontal {
+            flex: 1;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+
+    &.fixed {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    &_vertical {
+        display: flex;
+        flex-direction: column;
+        min-width: 50 * @unit;
+    }
+
+    &.@{prefix}menu {
+        height: 100vh;
+
+        .@{prefix}tab_bar_view {
+            >.@{prefix}tab_bar_item_view {
+                padding: 0;
+            }
+        }
+    }
+
+}

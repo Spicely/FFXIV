@@ -1,0 +1,91 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}select {
+    height: @select_height;
+    background: #fff;
+    border-radius: @theme_border_radius;
+
+    >span {
+        display: none !important;
+    }
+
+    &_icon {
+        width: 24 * @unit;
+
+        .@{prefix}icon {
+            .transition(0.5s);
+            fill: #b4b3b3 !important;
+        }
+    }
+
+    &__control {
+        min-height: initial !important;
+        height: 100% !important;
+        box-shadow: inherit !important;
+        border-radius: inherit  !important;
+        border: 1 * @unit solid #e8e8e8 !important;
+        background: inherit !important;
+        .transition(0.5s) !important;
+
+        &--is-focused {
+            border-color: @theme_color  !important;
+            box-sizing: border-box !important;
+            border-width: 1 * @unit  !important;
+
+            .@{prefix}select_icon {
+                .@{prefix}icon {
+                    fill: #7c7c7c !important;
+                }
+            }
+        }
+
+        &:hover {
+            border-color: @theme_color  !important;
+
+            .@{prefix}select_icon {
+                .@{prefix}icon {
+                    fill: #7c7c7c !important;
+                }
+            }
+        }
+    }
+
+    &__placeholder {
+        white-space: nowrap;
+    }
+
+    &__value-container {
+        min-width: 70 * @unit;
+    }
+
+    &__indicator {
+        padding: 0 8 * @unit  !important;
+
+        &-separator {
+            display: none;
+        }
+    }
+
+    &__menu {
+        border-radius: @theme_border_radius  !important;
+    }
+
+    &__option {
+        &:hover {
+            background: rgba(@theme_color, 0.65) !important;
+        }
+
+        &--is-selected {
+            background: @theme_color  !important;
+        }
+
+        &--is-focused {
+            background: rgba(@theme_color, 0.8) !important;
+        }
+    }
+
+    &__desc {
+        line-height: 32 * @unit;
+    }
+}

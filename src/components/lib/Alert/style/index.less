@@ -1,0 +1,34 @@
+@import '../../style/theme.less';
+
+.@{prefix}alert {
+    padding: 15 * @unit;
+
+    .type_color(@color) {
+        border: 1 * @unit solid rgb(@color, 0.4);
+        background: rgb(@color, 0.2);
+
+        &.inherit_color {
+            color: @color;
+        }
+    }
+
+    &_info {
+        .type_color(@theme_info_color);
+    }
+
+    &_success {
+        .type_color(@theme_success_color);
+    }
+
+    &_warning {
+        .type_color(@theme_warning_color);
+    }
+
+    &_error {
+        .type_color(@theme_error_color);
+    }
+
+    &_title {
+        margin-bottom: 6 * @unit;
+    }
+}

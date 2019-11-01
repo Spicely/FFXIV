@@ -1,0 +1,186 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}carousel {
+    height: @carousel_height;
+    position: relative;
+    overflow: hidden;
+
+    &__item {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        flex-shrink: 0;
+        .transition(0.3s);
+
+        &_image {
+            width: 100%;
+        }
+
+        &.@{prefix}fade {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &__mask {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+        pointer-events: none;
+
+        &.@{prefix}animate {
+            animation:~"@{prefix}carousel_fadeOut"0.3s forwards;
+        }
+
+        @keyframes ~"@{prefix}carousel_fadeOut" {
+            from {
+                background: rgba(255, 255, 255, 1);
+            }
+
+            to {
+                background: rgba(255, 255, 255, 0);
+            }
+        }
+    }
+
+    &_dot {
+        position: absolute;
+        .transition(0.3s);
+
+        &.@{prefix}bottom {
+            width: 100%;
+            top: calc(100% - 20 * @unit);
+            left: 0;
+            height: 20 * @unit;
+
+            .@{prefix}active {
+                background: @carousel_dots_color;
+
+                &.@{prefix}rectangle {
+                    width: 20 * @unit;
+                }
+            }
+        }
+
+        &.@{prefix}bottomRight {
+            top: calc(100% - 20 * @unit);
+            left: calc(100% - 20 * @unit);
+            height: 20 * @unit;
+            transform: translate(-100%, 0);
+
+            .@{prefix}active {
+                background: @carousel_dots_color;
+
+                &.@{prefix}rectangle {
+                    width: 20 * @unit;
+                }
+            }
+        }
+
+        &.@{prefix}bottomLeft {
+            top: calc(100% - 20 * @unit);
+            left: 20 * @unit;
+            height: 20 * @unit;
+
+            .@{prefix}active {
+                background: @carousel_dots_color;
+
+                &.@{prefix}rectangle {
+                    width: 20 * @unit;
+                }
+            }
+        }
+
+        &.@{prefix}top {
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 20 * @unit;
+
+            .@{prefix}active {
+                background: @carousel_dots_color;
+
+                &.@{prefix}rectangle {
+                    width: 20 * @unit;
+                }
+            }
+        }
+
+        &.@{prefix}left {
+            width: 20 * @unit;
+            top: 0;
+            left: 0;
+            height: 100%;
+
+            .@{prefix}carousel_dot__item {
+                margin-right: 0;
+                margin-bottom: 5 * @unit;
+
+                &.@{prefix}rectangle {
+                    height: 16 * @unit;
+                    width: 3 * @unit;
+                }
+
+                &.@{prefix}active {
+                    background: @carousel_dots_color;
+
+                    &.@{prefix}rectangle {
+                        height: 20 * @unit;
+                    }
+                }
+            }
+        }
+
+        &.@{prefix}right {
+            width: 20 * @unit;
+            top: 0;
+            left: calc(100% - 20 * @unit);
+            height: 100%;
+
+            .@{prefix}carousel_dot__item {
+                margin-right: 0;
+                margin-bottom: 5 * @unit;
+
+                &.@{prefix}rectangle {
+                    height: 16 * @unit;
+                    width: 3 * @unit;
+                }
+
+                &.@{prefix}active {
+                    background: @carousel_dots_color;
+
+                    &.@{prefix}rectangle {
+                        height: 20 * @unit;
+                    }
+                }
+            }
+        }
+
+        &__item {
+            background: darken(@carousel_dots_color, 10%);
+            margin-right: 5 * @unit;
+            cursor: pointer;
+            .transition(0.3s);
+
+            &.@{prefix}rectangle {
+                height: 3 * @unit;
+                width: 16 * @unit;
+            }
+
+            &.@{prefix}circular {
+                height: 8 * @unit;
+                width: 8 * @unit;
+                border-radius: 50%;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+@import '../../style/theme.less';
+
+.@{prefix}item {
+    min-height: 40 * @unit;
+    background: @theme_bg_color;
+    padding: 0 12 * @unit;
+    transition: all .1s cubic-bezier(0.65, 0.05, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 1 * @unit;
+        width: 100%;
+        bottom: 0;
+        transform: scaleY(0.5);
+    }
+
+    &.line_solid::after {
+        border-bottom: 1 * @unit solid @theme_line_color;
+    }
+
+    &.line_dashed::after {
+        border-bottom: 1 * @unit dashed @theme_line_color;
+    }
+
+    &:last-child::after {
+        border-bottom: 0;
+    }
+
+    &.active {
+        background-color: @theme_bg_color * 0.9 !important;
+    }
+
+    &_title {
+        color: #333333;
+        width: 0;
+        text-align: left;
+    }
+
+    &_right {
+        color: #888888;
+        font-size: 10 * @unit;
+    }
+
+    &_link {
+        margin-left: 6 * @unit;
+
+        &__icon {
+            color: #888888;
+        }
+    }
+}

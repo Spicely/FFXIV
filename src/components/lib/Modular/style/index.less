@@ -1,0 +1,61 @@
+@import '../../style/theme.less';
+
+.@{prefix}modular {
+    width: 100%;
+    height: @modular_height;
+    padding: 10 * @unit 5 * @unit;
+    background: #fff;
+
+    &__title {
+        font-size: 14 * @unit;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    &__label {
+        font-size: 12 * @unit;
+        white-space: nowrap;
+    }
+
+    &_right_top {
+        margin-right: 10 * @unit;
+    }
+
+    &__img {
+        width: 100%;
+
+        .@{prefix}_img {
+            width: 100%;
+            height: auto;
+        }
+
+        .@{prefix}_img_list {
+            width: 50 * @unit;
+            height: 50 * @unit;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    &_two__img {
+        height: 100%;
+        width: auto;
+
+        .@{prefix}_img {
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+            width: auto;
+        }
+    }
+
+    &_left {
+        width: 35%;
+        margin-right: 10 * @unit;
+    }
+
+    &.@{prefix}menu {
+        height: 100vh;
+        width: 100%;
+    }
+}

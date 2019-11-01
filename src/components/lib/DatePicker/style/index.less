@@ -1,0 +1,63 @@
+@import '../../style/theme.less';
+@import '../../style/mixin/index.less';
+
+.@{prefix}date_picker {
+    height: @input_height;
+    position: relative;
+    width: 100%;
+
+    &.active {
+        // height: @height;
+
+        input {
+            @diff: 18 * @unit;
+            top: @diff;
+            height: calc(100% - @diff);
+        }
+    }
+
+    >div {
+        height: 100%;
+        width: 100%;
+    }
+
+
+
+    input {
+        outline: none;
+        height: 100% !important;
+        width: 100%;
+        position: relative;
+        border: 1 * @unit solid #e8e8e8;
+        .transition(0.5s);
+
+        &:focus {
+            border-color: @theme_color;
+            box-shadow: initial;
+        }
+
+        &:hover {
+            border-color: @theme_color  !important;
+        }
+    }
+
+}
+
+.ant-calendar {
+    transform: translate(0, 2 * @unit);
+
+    &-input {
+        height: @input_height - 2 * @unit;
+
+        padding: 0;
+    }
+}
+
+.ant-calendar-input-wrap {
+    height: @input_height;
+    border-left: 1 * @unit solid #e8e8e8;
+    border-top: 1 * @unit solid #e8e8e8;
+    border-bottom: 1 * @unit solid #e8e8e8;
+    padding-top: 0;
+    padding-bottom: 0;
+}

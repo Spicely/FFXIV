@@ -1,0 +1,39 @@
+@import '../../style/theme.less';
+
+.@{prefix}search_bar {
+    &__title {
+        background: #f4f4f4;
+    }
+
+    &_search {
+        position: relative;
+
+        &__int {
+            height: 24 * @unit;
+            border-radius: 14 * @unit;
+            overflow: hidden;
+
+            input {
+                border: 0;
+            }
+        }
+
+        .@{prefix}btn_close {
+            margin-left: 4 * @unit;
+            position: absolute;
+            height: 26 * @unit;
+            top: 2 * @unit;
+            border-radius: 13 * @unit;
+            padding: 0 0.55rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 13 * @unit;
+        }
+
+        .@{prefix}font {
+            font-size: 12 * @unit  !important;
+            position: relative;
+            left: 4 * @unit;
+        }
+    }
+}

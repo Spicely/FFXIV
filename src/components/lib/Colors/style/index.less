@@ -1,0 +1,55 @@
+@import '../../style/theme.less';
+
+.@{prefix}colors {
+    position: relative;
+    height: @colors_height;
+
+    &_color {
+        width: 80 * @unit;
+        height: @colors_height;
+        padding: 4 * @unit;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 1 * @unit;
+        cursor: pointer;
+
+        &_box {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &_mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9;
+    }
+
+    &_select {
+        position: absolute;
+        top: 40 * @unit;
+    }
+
+    &_label {
+        margin-left: 8 * @unit;
+        font-size: 14 * @unit;
+    }
+
+    &_sketch {
+        height: 300 * @unit;
+    }
+
+    &_chrome {
+        height: 240 * @unit;
+    }
+
+    &_block {
+        height: 220 * @unit;
+    }
+
+    &_github {
+        height: 60 * @unit;
+    }
+}

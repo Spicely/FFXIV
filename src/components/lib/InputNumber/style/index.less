@@ -1,0 +1,51 @@
+@import '../../style/theme.less';
+
+.@{prefix}input_number {
+    &_btn {
+        width: 25 * @unit;
+        height: @input_number_height;
+        min-width: initial;
+        padding: 0;
+        vertical-align: middle;
+        margin: 0;
+        border-width: 0;
+    }
+
+    input {
+        background: #f6f6f6;
+        height: @input_number_height * 0.7;
+        margin: 0;
+        margin-top: @input_number_height * 0.15;
+        padding: 0;
+        width: 40 * @unit;
+        text-align: center;
+        border: 0;
+        border-radius: 3 * @unit;
+        outline: none;
+        font-size: 0.65rem;
+
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none !important;
+        }
+
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+        }
+    }
+
+    &.@{prefix}border {
+        .@{prefix}input_number_btn {
+            border-width: 1 * @unit;
+            width: 35 * @unit;
+        }
+
+        input {
+            border-top: 1 * @unit solid #ddd;
+            border-bottom: 1 * @unit solid #ddd;
+            background: #fff;
+            margin: 0;
+            border-radius: 0;
+            height: @input_number_height;
+        }
+    }
+}

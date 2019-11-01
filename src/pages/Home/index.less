@@ -1,0 +1,26 @@
+@import '~components/lib/style/theme.less';
+@import '~components/lib/style/mixin/index.less';
+
+.win_browser {
+    background: transparent;
+    -webkit-app-region: drag;
+    padding: 0;
+
+    &_btn {
+        width: 40 * @unit;
+        min-width: initial;
+        height: 40 * @unit;
+        background: transparent;
+        border-color: transparent;
+        -webkit-app-region: no-drag;
+
+        &:hover {
+            background: transparent;
+            border-color: transparent;
+
+            .@{prefix}icon {
+                fill: @theme_color  !important;
+            }
+        }
+    }
+}

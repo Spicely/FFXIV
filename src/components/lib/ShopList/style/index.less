@@ -1,0 +1,50 @@
+@import '../../style/theme.less';
+
+.@{prefix}shop_list {
+    &_list {
+        background: #fff;
+        padding: 10 * @unit;
+
+        &__img {
+            width: 80 * @unit;
+            height: 80 * @unit;
+
+            .@{prefix}_img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__right {
+            padding-left: 10 * @unit;
+            overflow: hidden;
+
+            &_title {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+            }
+
+            &_tags {
+                &__item {
+                    color: #A9A9A9;
+                    margin-left: 5 * @unit;
+                    display: inline-block;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            .@{prefix}shop_list_info {
+                &_price {
+                    color: #FC565A;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
