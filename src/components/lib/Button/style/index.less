@@ -34,9 +34,15 @@
     }
 
     &.btn_error {
+        @error_bg_color: #ffe4e8;
         color: @error_color  !important;
         border-color: @error_color;
-        background: #ffe4e8;
+        background: @error_bg_color;
+
+        &:hover {
+            border-color: rgba(@error_color, 0.5);
+            background: rgba(@error_bg_color, 0.8);
+        }
     }
 
     &.btn_primary {

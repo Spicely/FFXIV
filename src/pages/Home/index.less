@@ -1,6 +1,10 @@
 @import '~components/lib/style/theme.less';
 @import '~components/lib/style/mixin/index.less';
 
+.bg {
+    background: #1e1f24;
+}
+
 .win_browser {
     background: transparent;
     -webkit-app-region: drag;
@@ -22,5 +26,49 @@
                 fill: @theme_color  !important;
             }
         }
+    }
+}
+
+.icon_btn {
+    cursor: pointer;
+    fill: white !important;
+
+    &:hover {
+        fill: @theme_color  !important;
+    }
+}
+
+.color_white {
+    color: white;
+}
+
+.gather_list {
+    color: #fff;
+    text-align: center;
+    background-color: #27282d;
+    border: 2 * @unit solid #27282d;
+    margin-bottom: 20 *@unit;
+    border-radius: 5 * @unit;
+
+    &_info {
+        padding: 20 * @unit 0;
+        border-bottom: 2 * @unit solid #35363a;
+    }
+
+    &_v {
+        border-right: 2 * @unit solid #35363a;
+
+        &:last-child {
+            border-right: 0;
+        }
+    }
+
+    &_l {
+        margin-top: 5 * @unit;
+        color: #9a9ba0;
+    }
+
+    &_alarm {
+        padding: 5 *@unit 10 * @unit;
     }
 }

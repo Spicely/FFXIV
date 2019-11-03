@@ -156,6 +156,10 @@ export default class LForm extends Component<ILFormProps, IState> {
                     vals[field] = _porps.fileList || (_porps.maxLength > 1 ? [] : '')
                     // tslint:disable-next-line: align
                 } break
+                case 'RadioGroup': {
+                    vals[field] = isUndefined(_porps.value) ? '' : _porps.value
+                    // tslint:disable-next-line: align
+                } break
                 case 'ImagePicker': {
                     vals[field] = _porps.value || []
                     // tslint:disable-next-line: align
@@ -773,7 +777,7 @@ export default class LForm extends Component<ILFormProps, IState> {
 
     private setColors(field: string, cb: (color: ColorResult, e: ChangeEvent<HTMLButtonElement>) => {}, color: ColorResult, e: ChangeEvent<HTMLButtonElement>) {
         const { vals } = this.state
-        vals[field] = color.hex
+        vals[field] = `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`
         if (isFunction(cb)) {
             cb(color, e)
         }

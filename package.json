@@ -1,31 +1,39 @@
 {
-  "name": "muka_electron",
+  "name": "FFXIV-tool",
   "version": "0.1.0",
   "private": true,
   "main": "./main.js",
   "homepage": "./",
+  "author": "Spicely",
   "dependencies": {
     "@babel/core": "7.6.0",
     "@svgr/webpack": "4.3.2",
     "@types/jest": "24.0.18",
+    "@types/moment": "^2.13.0",
     "@types/node": "12.7.12",
     "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
     "@types/react-loadable": "^5.5.2",
+    "@types/react-redux": "^7.1.5",
+    "@types/react-router-dom": "^5.1.1",
+    "@types/redux-persist": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
-    "antd": "^3.23.6",
+    "antd": "^3.24.3",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.0.6",
+    "babel-plugin-import": "^1.12.2",
     "babel-plugin-named-asset-import": "^0.3.4",
     "babel-preset-react-app": "^9.0.2",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "concurrently": "^5.0.0",
     "css-loader": "2.1.1",
+    "customize-cra": "^0.8.0",
     "dotenv": "6.2.0",
     "dotenv-expand": "5.1.0",
+    "electron-store": "^5.1.0",
     "eslint": "^6.1.0",
     "eslint-config-react-app": "^5.0.2",
     "eslint-loader": "3.0.2",
@@ -48,6 +56,7 @@
     "less-loader": "^5.0.0",
     "load-script": "^1.0.0",
     "mini-css-extract-plugin": "0.8.0",
+    "moment": "^2.24.0",
     "muka": "^0.2.3",
     "muka-react": "^0.1.0",
     "next": "^9.1.1",
@@ -60,13 +69,18 @@
     "postcss-safe-parser": "4.0.1",
     "react": "^16.10.2",
     "react-app-polyfill": "^1.0.4",
+    "react-app-rewired": "^2.1.4",
     "react-color": "^2.17.3",
     "react-dev-utils": "^9.1.0",
     "react-dom": "^16.10.2",
     "react-easy-crop": "^1.16.1",
     "react-loadable": "^5.5.0",
     "react-quill": "^1.3.3",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
     "react-select": "^3.0.8",
+    "redux-persist": "^6.0.0",
+    "redux-persist-electron-storage": "^2.1.0",
     "resolve": "1.12.0",
     "resolve-url-loader": "3.1.0",
     "sass-loader": "7.2.0",
@@ -83,14 +97,16 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {
+    "@types/react-color": "^3.0.1",
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0"
   },
   "build": {
-    "productName": "Muka_Electron-React",
+    "productName": "FFXIV工具",
     "artifactName": "${productName}_setup.${ext}",
     "appId": "com.example.app",
     "files": [
+      "assets/",
       "build/",
       "main.js",
       "package.json"
@@ -195,6 +211,33 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "components",
+          "camel2DashComponentName": false,
+          "style": true
+        },
+        "components"
+      ],
+      [
+        "import",
+        {
+          "libraryName": "muka",
+          "camel2DashComponentName": false
+        },
+        "muka"
+      ],
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": true
+        },
+        "antd"
+      ]
     ]
   }
 }

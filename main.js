@@ -1,18 +1,33 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain, Menu, Tray, nativeImage } = require('electron')
 const path = require('path')
 const url = require('url')
 global.electron = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-
-
+let trayInstance
+let notifucationWindow
 
 // const isDev = process.env.NODE_ENV === 'development'
-const isDev = true
+const isDev = false
 const port = parseInt(process.env.PORT, 10) || 3000
 const devUrl = `http://localhost:${port}/`
+
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
+    app.quit()
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        // 当运行第二个实例时,将会聚焦到mainWindow这个窗口
+        if (mainWindow) {
+            if (mainWindow.isMinimized()) { mainWindow.restore() }
+            mainWindow.focus()
+            mainWindow.show()
+            mainWindow.setSkipTaskbar(true)
+        }
+    })
+}
 
 const prodUrl = url.format({
     pathname: path.resolve(__dirname, 'build/index.html'),
@@ -30,9 +45,18 @@ const preloadUrl = isDev ? path.join(__dirname, './public/preload.js') : preUrl
 
 function createWindow() {
     // Create the browser window.
+    const { screen } = require('electron')
+    const appIconPath = path.join(__dirname, './assets/FFVIX.png')
+    const { height, width } = screen.getPrimaryDisplay().workAreaSize
     mainWindow = new BrowserWindow({
         width: 800,
+        minWidth: 800,
+        minHeight: 600,
         height: 600,
+        frame: false,
+        icon: appIconPath,
+        title: 'FFXIV工具',
+        titleBarStyle: 'hiddenInset',
         webPreferences: {
             javascript: true,
             plugins: true,
@@ -42,19 +66,84 @@ function createWindow() {
         }
     })
 
-    // and load the index.html of the app.
-    // mainWindow.loadFile('index.html')
+    notifucationWindow = new BrowserWindow({
+        width: 400,
+        height,
+        x: width - 400,
+        y: 0,
+        title: '提示窗口',
+        frame: false,
+        icon: appIconPath,
+        skipTaskbar: true,
+        titleBarStyle: 'hiddenInset',
+        alwaysOnTop: true,
+        transparent: true,
+        webPreferences: {
+            javascript: true,
+            plugins: true,
+            nodeIntegration: true,
+        }
+    })
+
+    const contextMenu = Menu.buildFromTemplate([
+        { label: '退出', click: () => { app.quit() } },
+    ])
+
+    trayInstance = new Tray(nativeImage.createFromPath(appIconPath))
+    trayInstance.setToolTip('FFXIV工具')
+    trayInstance.setContextMenu(contextMenu)
+    trayInstance.on('double-click', function () {
+        mainWindow.show()
+        mainWindow.setSkipTaskbar(false)
+    })
+
+    ipcMain.on('notificationMain', (event, message) => {
+        notifucationWindow.webContents.send('notification', message)
+    })
+
+    ipcMain.on('notificationMainClose', (event, message) => {
+        notifucationWindow.webContents.send('notificationClose', message)
+    })
+
+    ipcMain.on('notificationTime', (event, message) => {
+        notifucationWindow.webContents.send('notificationTime', message)
+    })
+
+    ipcMain.on('min', () => mainWindow.minimize())
+    ipcMain.on('max', () => {
+        if (mainWindow.isMaximized()) {
+            mainWindow.unmaximize()
+        } else {
+            mainWindow.maximize()
+        }
+    })
+
+    ipcMain.on('close', (event) => {
+        mainWindow.hide()
+        mainWindow.setSkipTaskbar(true)
+        event.preventDefault()
+    })
+
+    app.on('window-all-closed', () => {
+        app.quit()
+    })
+
     mainWindow.loadURL(indexUrl)
+    notifucationWindow.loadURL(`${indexUrl}?/#/notification`)
 
-    // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    notifucationWindow.setIgnoreMouseEvents(true)
 
-    // Emitted when the window is closed.
+    if (isDev) {
+        mainWindow.webContents.openDevTools()
+        notifucationWindow.webContents.openDevTools()
+    }
+
     mainWindow.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
         mainWindow = null
+    })
+
+    notifucationWindow.on('closed', function () {
+        notifucationWindow = null
     })
 }
 

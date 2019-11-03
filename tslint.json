@@ -2,7 +2,7 @@
     "extends": ["tslint-react"],
     "rules": {
         "align": [
-            true,
+            false,
             "parameters",
             "arguments",
             "statements"
@@ -27,7 +27,7 @@
         "no-arg": true,
         "no-bitwise": true,
         "no-console": [
-            true,
+            false,
             "log",
             "error",
             "debug",

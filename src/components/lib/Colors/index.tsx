@@ -135,7 +135,7 @@ export default class Colors extends Component<IColorsProps, IState> {
     private handleChange = (color: ColorResult, event: ChangeEvent) => {
         const { onChange } = this.props
         this.setState({
-            color: color.hex
+            color: `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`
         })
         if (isFunction(onChange)) {
             onChange(color, event)
