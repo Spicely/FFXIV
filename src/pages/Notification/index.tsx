@@ -37,7 +37,6 @@ class NotificationMsg extends Component<IProps, any> {
             top: notificationStyle.top,
             bottom: notificationStyle.bottom,
             placement: notificationStyle.placement,
-            onClose: undefined,
             style: { background: notificationStyle.background },
             description: (
                 <div style={{ color: notificationStyle.color }}>

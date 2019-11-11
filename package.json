@@ -1,5 +1,5 @@
 {
-  "name": "FFXIV-tool",
+  "name": "ffxiv-tool",
   "version": "0.1.0",
   "private": true,
   "main": "./main.js",
@@ -103,7 +103,7 @@
     "electron-builder": "^21.2.0"
   },
   "build": {
-    "productName": "FFXIV-tool",
+    "productName": "ffxiv-tool",
     "artifactName": "${productName}_setup.${ext}",
     "appId": "com.example.app",
     "files": [
