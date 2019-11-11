@@ -9,9 +9,10 @@ let mainWindow
 let trayInstance
 let notifucationWindow
 
-// const isDev = process.env.NODE_ENV === 'development'
-const isDev = false
+const isDev = process.env.NODE_ENV === 'development'
+// const isDev = true
 const port = parseInt(process.env.PORT, 10) || 3000
+
 const devUrl = `http://localhost:${port}/`
 
 const gotTheLock = app.requestSingleInstanceLock()
@@ -86,7 +87,12 @@ function createWindow() {
     })
 
     const contextMenu = Menu.buildFromTemplate([
-        { label: '退出', click: () => { app.quit() } },
+        {
+            label: '退出', click: () => {
+                mainWindow = null;
+                app.quit()
+            }
+        },
     ])
 
     trayInstance = new Tray(nativeImage.createFromPath(appIconPath))
@@ -129,13 +135,13 @@ function createWindow() {
     })
 
     mainWindow.loadURL(indexUrl)
-    notifucationWindow.loadURL(`${indexUrl}?/#/notification`)
+    notifucationWindow.loadURL(isDev ? `${indexUrl}/#/notification` : `${indexUrl}?/#/notification`)
 
     notifucationWindow.setIgnoreMouseEvents(true)
 
     if (isDev) {
         mainWindow.webContents.openDevTools()
-        notifucationWindow.webContents.openDevTools()
+        // notifucationWindow.webContents.openDevTools()
     }
 
     mainWindow.on('close', function (event) {
@@ -143,7 +149,7 @@ function createWindow() {
         mainWindow.setSkipTaskbar(true)
         event.preventDefault()
     })
-    
+
     mainWindow.on('closed', function () {
         mainWindow = null
     })
