@@ -102,7 +102,7 @@
     "electron-builder": "^21.2.0"
   },
   "build": {
-    "productName": "FFXIV工具",
+    "productName": "FFXIV-tool",
     "artifactName": "${productName}_setup.${ext}",
     "appId": "com.example.app",
     "files": [
