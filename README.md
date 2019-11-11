@@ -20,7 +20,7 @@
 
 ## 使用方式
 下载zip文件: <a href="https://i.muka.site/ffxiv/ffxix-tool.v0.1.0.zip">v0.1.0</a>
-下载exe安装程序: <a href="https://i.muka.site/ffxiv/FFXIV-tool_setup.v0.1.0.exe0</a>
+下载exe安装程序: <a href="https://i.muka.site/ffxiv/FFXIV-tool_setup.v0.1.0.exe">v0.1.0</a>
 
 在应用程序中点击齿轮按钮导入提供的json数据 并点击闹钟按钮开启提示
 
