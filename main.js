@@ -138,6 +138,12 @@ function createWindow() {
         notifucationWindow.webContents.openDevTools()
     }
 
+    mainWindow.on('close', function (event) {
+        mainWindow.hide()
+        mainWindow.setSkipTaskbar(true)
+        event.preventDefault()
+    })
+    
     mainWindow.on('closed', function () {
         mainWindow = null
     })

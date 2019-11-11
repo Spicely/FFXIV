@@ -98,7 +98,7 @@ class Home extends Component<IProps, IState> {
             const val = ConvertToEorzeaTimeString(moment())
             gatherList.map((i) => {
                 const year = moment().format('YYYY-MM-DD')
-                if (ConvertToEorzeaTimeString(moment().add(Number(notificationStyle.time) || 2, 'm')) === i.startTime) {
+                if (ConvertToEorzeaTimeString(moment().add(Number(notificationStyle.time) || 2, 'm')) === i.startTime && i.tip) {
                     ipcRenderer.send('notificationTime', {
                         key: i.id + 'vvv',
                         msg: `即将出现${i.name}, 位置：${i.pos}(X:${i.posX},Y:${i.posY})`,
@@ -171,6 +171,9 @@ class Home extends Component<IProps, IState> {
     private setTip = (status: boolean, index: number) => {
         const { gatherList, setGatherList } = this.props
         gatherList[index].tip = status
+        if (status === false) {
+            ipcRenderer.send('notificationMainClose', gatherList[index].id + 'vvv')
+        }
         setGatherList([...gatherList])
     }
 
