@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from './pages/Home'
+import Calculator from './pages/Calculator'
 import Notification from './pages/Notification'
 import { Provider } from 'react-redux'
 import { HashRouter, Route, Switch } from 'react-router-dom'
@@ -12,8 +13,10 @@ const App: React.FC = () => {
             <PersistGate loading={null} persistor={persistor}>
                 <HashRouter>
                     <Switch>
-                        <Route path="/" exact={true} component={Home} />
+                        {/* <Route path="/" exact={true} component={Home} /> */}
+                        <Route path="/" exact={true} component={Calculator} />
                         <Route path="/notification" component={Notification} />
+                        
                     </Switch>
                 </HashRouter>
             </PersistGate>
